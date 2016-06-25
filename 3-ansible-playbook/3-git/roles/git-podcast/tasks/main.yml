@@ -1,0 +1,6 @@
+- git: repo=git://github.com/davinkevin/Podcast-Server.git
+       dest=~/podcast
+- shell: mvn package
+  args:
+      chdir: ~/podcast
+

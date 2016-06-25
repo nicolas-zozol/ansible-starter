@@ -1,0 +1,70 @@
+Vagrant - jug
+===
+
+TL;DR
+---
+* Installer Vagrant
+* demarrer avec le Vagrantfile donné
+* taper les commandes à la fin
+
+
+Installer vagrant
+----
+
+Telecharger Vagrant
+Installer / rebooter
+
+Ajouter au Path : VAGRANT_INSTALL\bin
+comande : vagrant -v
+
+Installer notre machine virtuelle
+----
+Créer un repertoire du style : c:\jug
+copier dans ce repertoire le Vagrantfile fourni
+
+Dans votre console : cd c:\jug ; vagrant ssh
+
+Si ca marche, sautez la partie 'Installer ssh'.
+Je vous conseille ensuite d'utiliser la console de Git/Mingw qui ressemble à quelque chose (ou Powershell pour les pros)
+
+
+
+Installer ssh sur Windows
+----
+
+En faisant `vagrant ssh`, vous avez une partie de la réponse.
+Vous pouvez re-installer en demandant de mettre les commandes unix dans le PATH
+	- oui oui, l'option rouge
+C'est ce que j'ai fait, je n'en connait pas encore les conséquences...
+Sinon on peut trouve run client comme putty.
+
+Configurer les clés
+---
+
+Faites `vagrant ssh` pour rentrer dans la machine
+`ls` vous permet de voir `jug_rsa` et `jug_rsa.pub` dans votre home
+Je suis un peu nul ou pressé, j'ai pas réussi à configurer le Vagrantfile. il faut donc faire :
+
+Depuis Windows :
+
+	vagrant ssh
+	
+Dansns la VM :
+
+	ls;
+	cp jug* .ssh;
+	cd .ssh/;
+	chmod go-r jug*;     # enleve les permissions de lecture aux inconnus
+	ssh -i jug_rsa jug@213.167.242.234    # permet de valider ssh sur une vm gandi
+	exit; # pour sortir de chez gandi
+	ansible test -m ping -u jug 
+
+>>> should be : 
+
+	213.167.242.234 | success >> {
+	    "changed": false,
+	    "ping": "pong"
+	}
+
+
+and you are all set :)

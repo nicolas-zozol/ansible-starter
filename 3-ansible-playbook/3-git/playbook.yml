@@ -1,0 +1,12 @@
+- hosts: test
+
+  remote_user: jug  # must have been created !
+
+  tasks:
+    - apt: name=git state=present update_cache=yes
+      sudo: yes
+
+
+  roles:
+    - {role: git-podcast, tags: ["mongo"]}
+

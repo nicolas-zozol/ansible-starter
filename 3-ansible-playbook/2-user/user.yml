@@ -1,0 +1,30 @@
+- hosts: test
+
+  remote_user: root   # must be root on gandi
+
+ #install sudo, put jug as sudo, create /opt
+  tasks:
+    - apt: name=sudo state=present update_cache=yes
+      tags:
+        - sudoing
+    - user: name=jug groups=sudo append=yes
+      tags:
+        - sudoing
+    - apt: name=wget state=present update_cache=yes
+    - lineinfile: "dest=/etc/sudoers state=present line='jug ALL=(ALL) NOPASSWD: ALL' validate='visudo -cf %s'"
+      tags:
+        - sudoing
+    - file: path=/opt state=directory owner=jug group=users
+      sudo: yes
+      tags:
+        - sudoing
+    - file: path=/opt/setup state=directory owner=jug group=users
+      sudo: yes
+      tags:
+        - sudoing
+    - file: path=/opt/conf state=directory owner=jug group=users
+      sudo: yes
+      tags:
+        - sudoing
+
+

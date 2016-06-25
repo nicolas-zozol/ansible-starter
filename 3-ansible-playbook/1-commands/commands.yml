@@ -1,0 +1,38 @@
+# Root and standard stuff --> could be quickly a Ansible-galaxy role with 'nicorama' as template variable
+- hosts: all
+  # remote_user: root  # must be root on gandi
+  remote_user: root
+
+    #############
+    #
+    #  Here are a list of YAML commands
+    #
+    #############
+
+
+    # A docker file already exists, needs docker.io : http://stackoverflow.com/questions/27978324
+  tasks:
+    - apt: name=docker.io state=present update_cache=yes
+    - name: install_stuff
+      apt: name=python-pip state=present update_cache=yes
+    - pip: name=docker-py
+    - user: name=jug groups=docker append=yes
+      tags: [user, docker, chocolate]
+
+- hosts: jenkins
+  # remote_user: root  # must be root on gandi
+  remote_user: jug
+
+# Just too long :(
+#
+  tasks:
+    - docker:
+        name: jenkins
+        docker_api_version: auto
+        net: host
+        image: jenkins
+        state: started
+        expose: ["8080:8080"]
+        tags: [docker]
+
+
