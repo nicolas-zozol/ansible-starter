@@ -1,0 +1,7 @@
+---
+- file: path=/opt state=directory owner=nicorama group=nicorama
+- file: path=/home/nicorama/bin state=directory owner=nicorama group=nicorama
+#- copy: src=.bashrc dest=/home/nicorama/ owner=nicorama group=nicorama mode="u=rw,g=r,o=r"
+- copy: src=.profile dest=/home/nicorama/ owner=nicorama group=nicorama mode="u=rw,g=r,o=r"
+- copy: src=.gitconfig dest=/home/nicorama/ owner=nicorama group=nicorama mode="u=rw,g=r,o=r"
+- copy: src=.gitignore_global dest=/home/nicorama/ owner=nicorama group=nicorama mode="u=rw,g=r,o=r"

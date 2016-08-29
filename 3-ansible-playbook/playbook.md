@@ -1,5 +1,5 @@
-Playbook
-=====
+ Playbook
+=========
 
 Objectifs
 -----
@@ -15,7 +15,7 @@ Dans `3-playbook/1-commands`
 
         #in 1-commands
         ansible-playbook --version
-        ansible-playbook commands.yaml
+        ansible-playbook commands.yml
 
 Astuce : dans ~/.bashrc
 

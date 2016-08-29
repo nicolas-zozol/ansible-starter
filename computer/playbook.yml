@@ -1,0 +1,17 @@
+- hosts: localhost
+
+  remote_user: root
+
+
+  roles:
+      - {role: user, tags: ["user"]}
+      #- {role: home, tags: ["user"]}
+
+#
+#- hosts: localhost
+#
+#  remote_user: nicorama  # must have been created !
+#
+#
+#  roles:
+#      - {role: home, tags: ["user"]}

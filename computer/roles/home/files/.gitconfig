@@ -1,0 +1,9 @@
+[user]
+	name = nicorama
+	email = nzozol@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+[push]
+	default = current
+[pull]
+	default = current

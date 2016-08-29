@@ -1,0 +1,18 @@
+---
+
+- apt: name=sudo state=present update_cache=yes
+- user: name=nicorama groups=sudo append=yes
+- apt: name=wget state=present update_cache=yes
+- apt: name=vim state=present update_cache=yes
+
+ #install sudo, put jug as sudo, create /opt
+
+ #   - lineinfile: "dest=/etc/sudoers state=present line='nicorama ALL=(ALL) NOPASSWD: ALL' validate='visudo -cf %s'"
+
+
+#    - file: path=/opt state=directory owner=nicorama group=nicorama
+#      sudo: yes
+#    - file: path=/opt/setup state=directory owner=nicorama group=nicorama
+#      sudo: yes
+#    - file: path=/opt/conf state=directory owner=nicorama group=nicorama
+#      sudo: yes
